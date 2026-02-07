@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    let name="thulakshana"; // block scope variable 
+    name1="thulakshana"; //global variable
+    console.log(name);
+
+    let age=20;
+    
+
+    let infi=Infinity;
+    console.log(infi);
+
+    let not_number=NaN;
+
+    let address="buluwala";
+    let message=`hello,${address}!`; //template literal
+    console.log(message);
+
+    let is_student=true; //boolean
+    let not_student=false;
+
+    let y=null;
+
+    let z; //undefined
+
+    let sym1=Symbol("id");
+    let sym2=Symbol("id");
+    console.log(sym1===sym2); //false (unique symbol)
+
+    let person={
+        name:"thula",
+        age:22
+    }
+    console.log(person.name);
+
+
+    let fruits=["apple","banana"];
+    console.log(fruits[0]);
+    console.log(fruits.length);
+
+    function great(nm){
+        return "hello" + nm;
+    }
+    console.log(great("thula"));
+
+
+    let today=new Date();
+    console.log(today);
+
+
+
+    function addition(a,b){
+        console.log(a+b);
+    }
+    addition(10,20);
+
+    //for loop
+    for(let i=0; i<=5;i++){ 
+        console.log(i)
+    }
+
+    //arrow function 
+    let arrow=(name)=>{
+        console.log(`hello ,${name}`);
+    }
+
+    arrow("thu");
+
+    let sports=["cricket","footbal","tennis"];
+    console.log(sports.length);
+    sports.push("rugby"); //add last element 
+    console.log(sports);
+    sports.pop(); //remove last element
+    console.log(sports);
+    sports.shift(); //remove first element
+    console.log(sports);
+
+    let obj2={
+        name:"icbt",
+        address:"kurunegala"
+
+    };
+
+    console.log(obj2.name);
+    bbj2.address="kandy";
+    console.log(obj2.address);
+
+    
+    
+
+
+
+
+
+    
+</script>
+
+
+</body>
+</html>

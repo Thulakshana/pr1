@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scope</title>
+
+
+<script>
+ 
+ let global_scope ="this is a global var";
+
+// global variable= code eke ona thanaka wada
+
+//local variable= adala function eka athule witharai wada karanne
+
+
+
+ function test()
+ {
+    let localscope="this is local scope var";
+    console.log(localscope);
+
+let global_scope="thullllllllll";
+//mewa local variable (function scope eke variable)
+//local variable namin pita variable thibbath ewata balapamak wenne na 
+    console.log(global_scope);
+
+ }
+
+ test(); // javascrip wala ona thanaka thiyana function ekak one thanaka call karanna puluwan (yata thiyana ewa udadi unath call karanna puluwan)
+
+//block scope eke variable
+{
+let block_scope ="this is block scope variable";
+//block scpoe varible wada karanne function scope variable wage 
+//var kiyala declear karoth block spoe ewa global scope wage wada karanne
+console.log(block_scope);
+}
+
+
+
+</script>
+
+
+</head>
+<body>
+    <h1> variable scope</h1>
+</body>
+</html>
