@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>color box</h1>
+    <label for="col">choose color</label>
+    <input type="color" id="col">
+<div id="div1">
+    <p id="p1">
+        Thulakshana dissnayaka
+    </p>
+</div>
+
+<script>
+    let color=document.getElementById("col");
+    let divv=document.getElementById("div1");
+    color.addEventListener('change',()=>{
+        divv.style.color=color.value;
+    })
+</script>
+
+</body>
+</html>

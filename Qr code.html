@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code genarate</title>
+    <script src="qrcode.js"></script>
+    <style>
+        input{
+            margin: 20px;
+            padding:6px;
+            font-size: 2rem;
+        }
+        #qrr{
+            margin-left: 20px;
+
+        }
+    </style>
+</head>
+<body>
+    
+<h1>genarating qr code</h1>
+<input type="text" name="my_input" id="my_input">
+<div id="qr"></div>
+
+<div id="qrr"></div>
+<button id="download">download</button>
+<script>
+
+var qrcode = new QRCode("qrr", {  //meka api hadana eka 
+    text: "--", 
+    width: 300,
+    height: 300,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
+});
+
+
+
+//new QRCode(document.getElementById("qr"), "http://google.com");//google ekata yana qe ekak
+
+
+
+let myInput=document.getElementById("my_input");
+
+myInput.addEventListener('keyup',function(){
+   
+    let input =myInput.value;
+qrcode.makeCode(input);
+})
+
+document.getElementById("download").onclick=()=>{
+    let img=document.querySelector("#qrr img")
+    let link=document.createElement('a');
+    link.href=img.src;
+    link.download="QrCode.png";
+    link.click();
+}
+
+</script>
+
+</body>
+</html>

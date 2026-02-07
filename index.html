@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Web</title>
+    <script src="file2.js"></script>
+   
+</head>
+<!--*********************************************************************************************************-->
+<body>
+    <header>
+        <h1>Thulakshana</h1>
+    </header>
+<!--*************************************************************************************************************-->
+    <nav>
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#body" class="nav-link">Body</a> 
+        <a href="#game">game</a>
+    </nav>
+<!--****************************************************************************************************************-->
+    <section id="home">
+        <hr>
+        <button onclick="console.log('Button clicked')">Click me</button>
+    </section>
+<!--**************************************************************************************************************-->
+    <section id="body">
+        <h1>Conditional Statement</h1>
+        <h6>Age:</h6>
+        <input type="text" id="age" placeholder="Enter your age">
+        <button onclick="check_age()" id="btn1">Check Age</button>
+
+        <br>
+        <br>
+
+        <select id="select1">
+            <option value="colombo">colombo</option>
+            <option value="kurunagala">kurunagala</option>
+            <option value="mawathagama">mawathagama</option>
+        </select>
+   
+    <button id="btn2" onclick="check_district()">check district</button>
+
+    <h1>comparison values</h1>
+
+    <label for="input1">number1</label>
+    <input type="text" id="input1">
+    <lable for="input2">number2</lable>
+    <input type="text" id="input2">
+    <div id="div1">result</div>
+    <div id="div2">result2</div>
+    <button onclick="compare()" id="btn3">compare</button>
+
+<h1>massage boxes</h1>
+<button onclick="show_message()" id="btn4">get message</button>
+<br>
+<button onclick="get_input()" id="btn5">get input</button>
+<br>
+<button onclick="ok_box()" id="btn6">ok box</button>
+<br>
+<div id="div3">results</div>
+
+<h1>delay</h1>
+
+<button onclick="print()" id="btn7">print</button>
+<button onclick="animate()" id="btn8">animate</button>
+<button onclick="stop_animate()" id="btn9">stop animate</button>
+<p id="p1"> </p>
+
+</section>
+
+<section id="game">
+<h1>random letter</h1>
+<div id="game_section">
+    <h2 id="display" style="padding:20px">key</h2>
+   
+</div>
+</section>
+
+
+<!--**********************************************************************************************************-->
+    <script>
+
+function randomChar() {
+            const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+            const randomIndex = Math.floor(Math.random() * alphabet.length);
+            return alphabet[randomIndex];
+        }
+
+         display.innerHTML = randomChar();
+
+
+
+
+
+let print_button=document.getElementById("btn7");
+let animate_button=document.getElementById("btn8");
+let stop_animate=document.getElementById("btn9");
+let output=document.getElementById("p1");    
+function print()
+{
+setTimeout(function (){
+output.innerHTML="clicked";
+},2000) //thappara dekakin wada karanna
+}
+
+let left=1;
+let proces;
+
+function animate()
+{
+proces=setInterval(function(){
+left+=10;
+output.style.marginLeft=left+"px";
+},1000)
+}
+animate_button.onclick=animate;
+
+
+stop_animate.onclick=function(){
+clearInterval(proces);
+output.innerHTML="stoped";
+}
+
+
+//***************************************************************************************************************
+
+
+
+
+
+    </script>
+
+</body>
+</html>

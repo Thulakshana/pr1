@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color manipulate</title>
+    <style>
+.class1{
+    background-color: blue;
+}
+.class2{
+    background-color: brown;
+}
+.class3{
+    background-color: blueviolet;
+}
+    </style>
+</head>
+<body>
+    <h1>color manipulate</h1>
+    <select id="select1">
+        <option value="class1">class1</option>
+        <option value="class2">class2</option>
+        <option value="class3">class3</option>
+    </select>
+    <div id="div1">
+        <p id="p1">
+            Thulakshana dissanayaka
+        </p>
+
+    </div>
+<script>
+
+let select=document.getElementById("select1");
+let div=document.getElementById("div1");
+
+select.addEventListener('change',()=>{
+    div.className=select.value;
+})
+
+</script>
+    
+</body>
+</html>

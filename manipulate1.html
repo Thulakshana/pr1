@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manipulate font size</title>
+
+<style>
+#p1{
+    color: blue;
+    font-size:20px;
+}
+</style>
+
+</head>
+<body>
+ <h1>manipulate font size</h1>
+ <label for="val">input font size</label>
+    <input type="number" id="val">
+
+    <div id="div1">
+        <p id="p1">Thulakshana dissanayaka</p>
+    </div>
+
+    <script>
+        let input_size=document.getElementById("val");
+let name=document.getElementById("p1");
+input_size.addEventListener('change',()=>{
+    console.log(input_size.value);
+    name.style.fontSize=input_size.value+"px";
+})
+    </script>
+
+</body>
+</html>

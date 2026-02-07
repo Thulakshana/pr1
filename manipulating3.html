@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+
+
+</head>
+<body>
+    <h1>show hide toggle</h1>
+    <button id="btn1">show</button>
+    <button id="btn2">hide</button>
+    <button id="btn3">toggle</button>
+
+    <div id="div1">
+        <p id="p1">
+            Thulakshana dissnayaka
+        </p>
+    </div>
+
+    <script>
+let show=document.getElementById("btn1");
+let hide=document.getElementById("btn2");
+let toggle=document.getElementById("btn3");
+let divv=document.getElementById("div1");
+
+show.onclick=()=>{
+    divv.classList.remove('hidden');
+}
+
+hide.onclick=()=>{
+    divv.classList.add('hidden');
+}
+
+toggle.onclick=()=>{
+    divv.classList.toggle('hidden');
+}
+
+    </script>
+
+</body>
+</html>

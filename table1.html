@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Score Sheet</title>
+    <style>
+        body{
+            background-color: lightblue;
+        }
+        h1{
+            color: darkblue;
+        }
+        h2{
+            font-size: 1.2rem;
+        }
+        button{
+            background-color: darkblue;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+        .dialog-container{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            opacity: 0;
+            justify-content: center;
+            align-items: center;
+            align-items: center;
+            /* animation */
+            transition: all 200ms ease-in-out;
+            ;
+        }
+        .dialog-container > div{
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            position: relative;
+            box-shadow: 0 0 5px black;
+        }
+        .field-set{
+            margin-top: 10px;
+        }
+        #closeAddDataBtn{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            border: none;
+            padding: 1px 4px;
+            box-shadow: 0 1px 0px black;
+        }
+        #addDataBtn{
+            background-color: green;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            padding: 5px;
+            box-shadow: 0 1px 0px black;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .delete-btn{
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            border: none;
+            padding: 1px 4px;
+            box-shadow: 0 1px 0px black;
+            margin-left: 10px;
+            font-size: .8rem;
+        }
+        #info{
+            margin-top: 10px;
+        }
+
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        table, th, td{
+            border: 1px solid black;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>Student Score Sheet</h1>
+    <button id="addDataDialogBtn">Add Data</button>
+    <div id="info">
+
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="list">
+            
+        </tbody>
+    </table> 
+    <!-- Dialog -->
+    <div class="dialog-container">
+        <div>
+            <h2>Add Data</h2>
+            <div class="field-set">
+                <label for="name">Name</label>
+                <input type="text" id="name">                
+            </div>
+            <div class="field-set">
+                <label for="score">Score</label>
+                <input type="number" id="score">
+            </div>
+            <button id="addDataBtn">Add</button>
+            <button id="closeAddDataBtn">X</button>
+        </div>
+    </div>
+    <script>
+        const list = document.getElementById('list'); //table body
+        const addDataDialogBtn = document.getElementById('addDataDialogBtn'); //add button       
+        const closeAddDataBtn = document.getElementById('closeAddDataBtn'); //close button
+        const dialogContainer = document.querySelector('.dialog-container'); //dialog
+        const nameInput = document.getElementById('name'); //name input
+        const scoreInput = document.getElementById('score'); //socre input
+        const addDataBtn = document.getElementById('addDataBtn'); //add data
+        const info = document.getElementById('info');
+
+        
+
+        addDataDialogBtn.addEventListener('click', function(){
+            dialogContainer.style.display = 'flex';   
+            setTimeout(function(){
+                dialogContainer.style.opacity = 1;
+            }, 100);         
+        });
+
+        closeAddDataBtn.addEventListener('click', closeDialog);
+        function closeDialog(){ //close function eka
+            dialogContainer.style.opacity = 0;
+            setTimeout(function(){
+                dialogContainer.style.display = 'none';
+            }, 100);
+        }
+
+        let student=[]; // function ekak athule haduwoth wena ewata access larana ba (scope)
+
+       function add_data(){
+        let name=nameInput.value;
+        let score=scoreInput.value;
+        if(name!=''&&score!=''){
+            student.push({ //student array ekata add karanne
+                //object ekkakk thamai push karanne 
+                name: name,
+                score: score
+            });
+                
+            nameInput.value='';
+            scoreInput.value=''; //me deken filed eka clear wenawa
+            dispaly_list();
+            closeDialog();
+        }else{
+            alert("please fill all blanks");
+        }
+       
+
+       } 
+
+
+addDataBtn.onclick=add_data; 
+
+// dispaly add data
+function dispaly_list(){
+
+//sorting array (wadima eke idan aduma ekata)
+student.sort(function(a,b){
+//object erray ekak sort karanne mehemai
+return b.score-a.score; //a -b dunnoth adu eke idala wadi ekata sort wenawa
+
+})
+
+
+let total= 0;
+let max= 0
+let min= 100; 
+
+student.forEach(students=>{
+    // max eka hoyanwa
+    students.score= parseInt(students.score);
+    console.log(typeof students.score);
+    if(students.score>max){
+        max=students.score;
+    }
+    //min eka
+    if(students.score<min){
+        min=students.score;
+
+    }
+//total eka
+    total += students.score;
+
+
+
+})
+
+//average eka
+let average=total/student.length;
+
+// display avarage total max min
+
+info.innerHTML=`NO.student: ${student.length}<br>`;
+info.innerHTML+= `max: ${max} | min: ${min} |avarage: ${average}`;
+
+
+    list.innerHTML=''; //
+    student.forEach(function(students){
+        //record ekak hadanawa
+        let record=document.createElement('tr'); //table raw eka
+        //raw eke colums 4k thiyanwa. ewa pahatha widihata hadala data add karanna one 
+        let td0=document.createElement('td');
+        td0.innerHTML=student.indexOf(students)+1;//student kiyana array eke studentge index eka (+1 0n patan ganna eka 1n patan gannawa)
+        let td1=document.createElement('td');
+        td1.innerHTML=students.name;
+        let td2=document.createElement('td');
+        td2.innerHTML=students.score;
+        let td3=document.createElement('td');
+        let btn=document.createElement('button'); //delete button add kireema
+        btn.innerHTML='delete';
+        btn.classList.add("delete-btn");
+        td3.appendChild(btn);
+
+//delete button ekata click event ekak add kireema
+
+btn.onclick=function(){
+    let confirmed= confirm('are you sure ?');
+    if(!confirmed){
+        return;
+    }
+    let index=student.indexOf(students);
+    student.splice(index,1);
+    //display
+    dispaly_list();
+}
+
+        
+        record.appendChild(td0);
+        record.appendChild(td1);
+        record.appendChild(td2);
+        record.appendChild(td3);
+
+        //dan table body ekata data tika daanawa
+        list.appendChild(record);
+
+
+
+
+    })
+}
+        
+    </script>       
+</body>
+</html>

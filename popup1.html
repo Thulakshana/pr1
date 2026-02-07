@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>popup dialog box</title>
+    <style>
+.popup{
+width:100%;
+height: 100%;
+position:fixed;
+background-color: gray;
+top:0;
+left:0;
+
+display:flex;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: all 1s ease-in-out;
+}
+
+.popup div{
+background-color: beige;
+border:2px solid gray;
+border-radius:10px;
+padding: 25px;
+}
+.popup input{
+font-size: 20px;
+padding: 5px;
+margin-top: 10px;
+transition: all 1s ease-in-out;
+}
+.hidden{
+    display: none;
+}
+
+@keyframes shake{
+    0%{
+        transform: translateX(0);
+    } 25%{
+        transform: translateX(10px);
+    }50%{
+        transform: translateX(-10px);
+    }75%{
+        transform: translateX(10px);
+    }100%{
+        transform: translateX(0);
+    }
+}
+    </style>
+</head>
+<body>
+
+<h2>my user interface</h2>
+<p>name: <span id="output"></span></p> 
+<p>age: <span id="ageoutput"></span></p> 
+<button id="btn1">click me</button>
+
+
+<div class="popup hidden" id="namepopup">
+    <div>
+        <h2>what is your name:</h2>
+        
+        <input type="text" id="input" placeholder="what is your name">
+        <!--methana br tag ekak daala pallayahata input waten widihata hadanna puluwan-->
+        <input type="text" id="input1" placeholder="what is your age">
+        
+       
+        <hr>
+        <button onclick="take()">ok</button>
+        <button onclick="cancelpop()">cancel</button>
+    </div>
+</div>
+
+<script>
+    //promt ekkin inout gannawa
+let btn1=document.getElementById("btn1");
+let namepopup=document.getElementById("namepopup");
+let nameinput=document.getElementById("input");
+
+btn1.onclick= ()=>{
+    namepopup.classList.remove('hidden');
+    
+setTimeout(()=>{
+    namepopup.style.opacity='100%';
+},100)
+
+}
+
+
+function cancelpop(){
+
+namepopup.style.opacity='0%';
+setTimeout(()=>{
+   
+    namepopup.classList.add('hidden');
+
+},1000)
+    
+   
+}
+
+function take(){
+let nm=input.value;
+let age=document.getElementById("input1").value;
+
+if(nm==""||age==""){
+
+input.style.animation="shake 1s ease-in-out";
+input1.style.animation="shake 1s ease-in-out";
+
+setTimeout(()=>{
+    input.style.animation="shake 1s ease-in-out";
+    input1.style.animation="shake 1s ease-in-out";
+},1000)
+return;
+
+
+}
+
+    document.getElementById("output").textContent=nm;
+    document.getElementById("ageoutput").textContent=age;
+    namepopup.classList.add('hidden');
+    nameinput.value="";
+    //methanata cancelpop function eka call karannath puluwan
+    
+}
+
+</script>
+
+</body>
+</html>
